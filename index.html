@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#10a77e">
+  <title>ตู้จัดยาอัจฉริยะ</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="app">
+  <header class="hero">
+    <div class="brand">SMART MEDBOX</div>
+    <div class="hero-line">
+      <div>
+        <h1>💊 ตู้จัดยาอัจฉริยะ</h1>
+        <p>ตั้งเวลารับยาได้จาก LINE</p>
+      </div>
+      <div id="avatar"></div>
+    </div>
+    <div id="lineStatus" class="status">กำลังเชื่อมต่อ LINE…</div>
+  </header>
+
+  <section class="card clock-card">
+    <div><span class="muted">เวลาตู้</span><strong id="clock">--:--:--</strong></div>
+    <div id="deviceState" class="state">กำลังตรวจสอบตู้…</div>
+  </section>
+
+  <section class="card">
+    <div class="title-row">
+      <h2>⏰ ตารางรับยา</h2>
+      <button class="primary" id="addBtn">＋ เพิ่มเวลา</button>
+    </div>
+    <div id="scheduleList"></div>
+  </section>
+
+  <section class="card">
+    <h2>💊 ชื่อยาแต่ละช่อง</h2>
+    <div class="medicine-grid">
+      <input id="med1" placeholder="ช่อง 1 เช่น ยาหลังอาหาร">
+      <input id="med2" placeholder="ช่อง 2">
+      <input id="med3" placeholder="ช่อง 3">
+      <input id="med4" placeholder="ช่อง 4">
+    </div>
+    <button class="secondary full" id="saveMeds">บันทึกชื่อยา</button>
+  </section>
+
+  <section class="card">
+    <h2>⚙️ ตู้ของฉัน</h2>
+    <div class="device-row">
+      <input id="deviceId" value="MEDBOX-01" placeholder="รหัสตู้">
+      <button class="secondary" id="registerBtn">ผูกตู้</button>
+    </div>
+    <p class="hint">Servo 1–4 = ช่องยา 1–4 • Buzzer D8 • ปุ่มรับยา D7 • RTC DS3231</p>
+  </section>
+
+  <section class="card">
+    <div class="title-row"><h2>📋 ประวัติการจ่ายยา</h2><button class="small" id="refreshHistory">รีเฟรช</button></div>
+    <div id="history"></div>
+  </section>
+
+  <div class="modal hidden" id="modal">
+    <div class="modal-box">
+      <div class="title-row"><h2>เพิ่มเวลารับยา</h2><button class="icon" id="closeBtn">✕</button></div>
+      <label>เวลา</label>
+      <input id="timeInput" type="time" value="07:00">
+      <label>ชื่อมื้อ</label>
+      <input id="labelInput" value="มื้อเช้า">
+      <label>ช่องยาที่ต้องจ่าย</label>
+      <div class="channels">
+        <label><input type="checkbox" value="1"> ช่อง 1</label>
+        <label><input type="checkbox" value="2"> ช่อง 2</label>
+        <label><input type="checkbox" value="3"> ช่อง 3</label>
+        <label><input type="checkbox" value="4"> ช่อง 4</label>
+      </div>
+      <button class="primary full" id="saveBtn">บันทึกเวลา</button>
+    </div>
+  </div>
+
+  <footer>Smart MedBox • LINE MINI App</footer>
+</div>
+<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>
